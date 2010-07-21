@@ -1,0 +1,55 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.64.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+SHA1 c063e6713fa2c08b4994c252e123f9a72c525193 Changes
+SHA1 69bc2e3fddbf775d336ce645ef61d7b59d97d4be INSTALL
+SHA1 1055b880ae470255dac9806c322d451e6ec1a7d2 LICENSE
+SHA1 cf016f68b1bd7c1d4885a838ffd73c4986ca2e99 MANIFEST
+SHA1 bade7a3f4fffeea3dbeb7b870910cba5f634cde3 META.json
+SHA1 9b0919dc9f5f56a4f421b9a1fbb975157d8eeffe META.yml
+SHA1 51519697cf32ee3541b93768466e2966c3925b52 Makefile.PL
+SHA1 ce2b900104f0d66a65ac19b1a45f0b6d906097f5 README
+SHA1 a2db135139bfbc27a3c9bc9ac338eebb6aa45f13 dist.ini
+SHA1 57aa6005c1aed18f20586d884581d9a40582b131 examples/log-dispatch-bread-board.out
+SHA1 b3bebe8cf0f0dc9190f28288673f9e4a66f5e56c examples/log-dispatch-bread-board.pl
+SHA1 8b261ad43faad4f8c6cdb798c64d7254f72c046a examples/log-dispatch.out
+SHA1 2ad558fc94e3492ae38908e07770e384e9619da8 examples/log-dispatch.pl
+SHA1 a878b5721f5db2443409365e6194f134a0bb4230 examples/mknytprofhtml.sh
+SHA1 ad0227adc778e62aba01783aa3bc063ac82cf5a6 lib/Black/Board.pm
+SHA1 61d3ef7f6adee61fe5369a577157bf0b14d5a974 lib/Black/Board/Manual.pod
+SHA1 698d07bd49095ff998561cc5ba4868aae00a2a0f lib/Black/Board/Message.pm
+SHA1 5f9d36cce97affd4b812a07fbaf23640dd8d001b lib/Black/Board/Publisher.pm
+SHA1 c303bd95136dc3dbcac118b154ee7bc34eddf8d7 lib/Black/Board/Subscriber.pm
+SHA1 3b3aaec920c36d0ffa7c9cc820e0e204a7050256 lib/Black/Board/Topic.pm
+SHA1 71d2d02b93db3f0e842e1fd8a8023bf173c1846c lib/Black/Board/Trait/Traversable.pm
+SHA1 5bb48adddcd086d557953ce95c219b8af73d2c4a lib/Black/Board/Types.pm
+SHA1 28c927fdf274cf0580441b02ef8f5aabf3c0012c t/01-use.t
+SHA1 38b7f54a01522d26f02361331e8ad975c9aeb54b t/02-message.t
+SHA1 0a2fffbe42cd486b5daa918526911b6688c59f58 t/03-subscriber.t
+SHA1 e97ca662e1bb05a2e34d863675f149bbb2e97b72 t/04-topic.t
+SHA1 0fd694950d5dca52fe9d6d7f63754d0dd6b86d89 t/author-critic.t
+SHA1 961a1e2c92d836c8cad2d34b784cbc75345dec63 t/release-kwalitee.t
+SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
+SHA1 9433c240fe590bc404ab68ff63984df763e347ed t/release-pod-coverage.t
+SHA1 4a20e002ed7fa355a62aa9f5ccbd1a4328ca40f6 t/release-pod-spell.t
+SHA1 b30cbdfaf935017c4568c0c91b242438cb87786e t/release-pod-syntax.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iF4EAREIAAYFAkxHfkcACgkQtrSrVCmRriM2KAEA+xHf95iSKZ5iHDDO6+DaPGRv
+YMMXcy+Wl0a9pS8cWPcBAJAXlb5pyR85SR9VbJv6J/dBaIlWPXtGmUk9NX5cBN9j
+=FTIw
+-----END PGP SIGNATURE-----

@@ -1,0 +1,136 @@
+package Black::Board::Manual;
+#ABSTRACT: Manual for L<Black::Board::Manual>
+
+
+__END__
+=pod
+
+=head1 NAME
+
+Black::Board::Manual - Manual for L<Black::Board::Manual>
+
+=head1 VERSION
+
+version 0.0001
+
+=head1 DESCRIPTION
+
+Currently this is a place I'm sticking my notes.
+
+=head1 EXAMPLES
+
+=head2 C<LogDispatch>
+
+    my $logger = new Log::Dispatch(
+        outputs => [
+            [ Screen => ( 'min_level' => 'debug' ) ]
+        ]
+    );
+
+    topic LogDispatch => subscribe => [ sub {
+        $logger->log( %{ $_->params } );
+        return $_->cancel_bubble;
+    } ];
+
+    subscriber LogDispatch => sub {
+        return $_->clone_with_params(
+            { message => '[Prefix] ' . $_->params->{message} }
+        );
+    };
+
+    publish LogDispatch => 
+        message => "Something that needs logging",
+        level => "alert";
+
+=head2 C<LogDispatch> with L<Bread::Board>
+
+    use Bread::Board;
+    use Black::Board;
+
+    container Logger => as {
+        my $s = service LogDispatch => (
+            lifecycle => 'Singleton',
+            block => sub {
+                Log::Dispatch->new(
+                    Outputs => [
+                        [ Screen => ( min_level => 'debug' ) ]
+                    ]
+                );
+            }
+        );
+        topic LogDispatch => as {
+            $s->get->log( %{ $_->params } );
+            return $_->cancel_bubble;
+        };
+    };
+    container Plugin => as {
+        subscriber LogDispatch => as {
+            return $_->clone_with_params(
+                { message => '[Plugin] ' . $_->params->{message} }
+            )
+        };
+        service Plugin1 => (
+            block => sub { ... }
+        );
+    };
+
+=head2 C<LogDispatch> no sugar
+
+    my $publisher = Black::Board::Publisher->new;
+
+    my $log_topic = Black::Board::Topic->new(
+        name => "LogDispatch"
+    );
+
+    $publisher->add_topic( $log_dispatch );
+
+    my $logger = new Log::Dispatch(
+        outputs => [
+            [ Screen => ( 'min_level' => 'debug' ) ]
+        ]
+    );
+
+    $log_topic->register_subscriber(
+        Black::Board::Subscriber->new(
+            subscription => sub {
+                $logger->log( %{ $_->params } );
+                return $_->cancel_bubble;
+            }
+        )
+    );
+
+    $log_topic->register_subscriber(
+        Black::Board::Subscriber->new(
+            subscription => sub {
+                return $_->clone(
+                    params => $_->params->merge( {
+                        message => '[Prefix] ' . $_->params->{message}
+                    } )
+                )
+            }
+        )
+    );
+
+    $publisher->publish(
+        topics  => [ 'LogDispatch' ],
+        message => {
+            params => {
+                message => "Something that needs logging",
+                level   => "alert"
+            }
+        }
+    );
+
+=head1 AUTHOR
+
+Scott Beck <sabeck@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Scott Beck <sabeck@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
